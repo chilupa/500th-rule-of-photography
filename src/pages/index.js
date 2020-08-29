@@ -13,7 +13,7 @@ const theme = createMuiTheme({
 const IndexPage = () => (
   <ThemeProvider theme={theme}>
     <Layout>
-      <SEO title="Home" />
+      <SEO title="500th Rule of Photography" />
       <CameraSettings />
     </Layout>
   </ThemeProvider>

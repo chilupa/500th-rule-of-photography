@@ -9,6 +9,7 @@ const CameraSettings = () => {
   const [cropType, setCropType] = useState("Canon Crop Sensor")
   const [focalLength, setFocalLength] = useState("")
   const [shutterSpeed, setShutterSpeed] = useState("")
+  const [error, setError] = useState(false)
 
   const handleChange = event => setCropType(event.target.value)
   const handleFocalLengthChange = event => setFocalLength(event.target.value)
@@ -25,8 +26,15 @@ const CameraSettings = () => {
     "Full Frame Cameras": 500 / focalLength,
   }
 
-  const handleCalulation = () =>
-    setShutterSpeed(Math.round(calculation[cropType], 0))
+  const handleCalculation = () => {
+    const shutterSpeed = Math.round(calculation[cropType], 0)
+    if (shutterSpeed === 0) {
+      setError(true)
+    } else {
+      setShutterSpeed(shutterSpeed)
+      setError(false)
+    }
+  }
 
   return (
     <Grid
@@ -36,8 +44,8 @@ const CameraSettings = () => {
       alignItems="center"
       spacing={4}
     >
-      <Grid item xs={12}>
-        <Box display="flex" flexDirection="row" justifyContent="center" p={2}>
+      <Grid item>
+        <Box display="flex" flexDirection="row" justifyContent="center" p={1}>
           <CameraIcon color="secondary" fontSize="large" />
         </Box>
       </Grid>
@@ -70,7 +78,7 @@ const CameraSettings = () => {
             disabled={focalLength === "" || cropType === ""}
             variant="contained"
             color="primary"
-            onClick={handleCalulation}
+            onClick={handleCalculation}
           >
             Calculate
           </Button>
@@ -79,7 +87,12 @@ const CameraSettings = () => {
       <Grid item xs={12}>
         {focalLength && cropType && shutterSpeed && (
           <Typography color="secondary" variant="body1" align="center">
-            Your shutter should be approximately <b>{shutterSpeed}</b> second(s)
+            Your shutter speed should be ~ <b>{shutterSpeed}</b> second(s)
+          </Typography>
+        )}
+        {error && (
+          <Typography color="error" variant="body1" align="center">
+            Something went wrong. Please try again.
           </Typography>
         )}
       </Grid>

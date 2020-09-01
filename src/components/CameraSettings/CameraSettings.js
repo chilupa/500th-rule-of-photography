@@ -45,7 +45,7 @@ const CameraSettings = () => {
       spacing={4}
     >
       <Grid item>
-        <Box display="flex" flexDirection="row" justifyContent="center" p={1}>
+        <Box display="flex" flexDirection="row" justifyContent="center" p={3}>
           <CameraIcon color="secondary" fontSize="large" />
         </Box>
       </Grid>

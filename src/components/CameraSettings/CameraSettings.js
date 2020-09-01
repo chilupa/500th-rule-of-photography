@@ -6,7 +6,7 @@ import CameraIcon from "@material-ui/icons/Camera"
 import Field from "../Field/Field"
 
 const CameraSettings = () => {
-  const [cropType, setCropType] = useState("")
+  const [cropType, setCropType] = useState("Canon Crop Sensor")
   const [focalLength, setFocalLength] = useState("")
   const [shutterSpeed, setShutterSpeed] = useState("")
 
@@ -41,20 +41,27 @@ const CameraSettings = () => {
           <CameraIcon color="secondary" fontSize="large" />
         </Typography>
       </Grid>
-      <Grid item xs={6}>
-        <Field text="Camera" />
+      <Grid item xs={12}>
+        <Typography variant="body1" color="textPrimary" align="center">
+          This app will calculate the shutter speed for your{" "}
+          <b>Astro Photography</b> shots. Choosing the right shutter speed will
+          avoid unnecessary star trails.
+        </Typography>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={6} sm={3}>
+        <Field text="Camera Type" />
+      </Grid>
+      <Grid item xs={6} sm={3}>
         <CameraType
           cameras={cameras}
           handleChange={handleChange}
           cropType={cropType}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={6} sm={3}>
         <Field text="Focal Length" />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={6} sm={3}>
         <FocalLength handleFocalLengthChange={handleFocalLengthChange} />
       </Grid>
       <Grid item xs={12}>
@@ -71,7 +78,7 @@ const CameraSettings = () => {
       </Grid>
       <Grid item xs={12}>
         {focalLength && cropType && shutterSpeed && (
-          <Typography variant="body1" align="center">
+          <Typography color="secondary" variant="body1" align="center">
             Your shutter should be approximately <b>{shutterSpeed}</b> second(s)
           </Typography>
         )}

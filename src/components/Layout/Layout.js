@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "../Header/Header"
 import { Box } from "@material-ui/core"
+import Container from "@material-ui/core/Container"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,10 +24,10 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <Container>
       <Header siteTitle={data.site.siteMetadata.title} />
       <Box pt={3}>{children}</Box>
-    </>
+    </Container>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Grid, Button, Typography } from "@material-ui/core"
+import { Grid, Button, Typography, Box } from "@material-ui/core"
 import CameraType from "../CameraType/CameraType"
 import FocalLength from "../FocalLength/FocalLength"
 import CameraIcon from "@material-ui/icons/Camera"
@@ -37,9 +37,9 @@ const CameraSettings = () => {
       spacing={4}
     >
       <Grid item xs={12}>
-        <Typography align="center">
+        <Box display="flex" flexDirection="row" justifyContent="center" p={2}>
           <CameraIcon color="secondary" fontSize="large" />
-        </Typography>
+        </Box>
       </Grid>
       <Grid item xs={12}>
         <Typography variant="body1" color="textPrimary" align="center">

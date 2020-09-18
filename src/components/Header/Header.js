@@ -4,7 +4,7 @@ import { Typography, Box } from "@material-ui/core"
 
 const Header = ({ siteTitle }) => (
   <Box p={3}>
-    <Typography variant="h4" color="primary" align="center">
+    <Typography variant="h1" color="primary" align="center">
       {siteTitle}
     </Typography>
   </Box>

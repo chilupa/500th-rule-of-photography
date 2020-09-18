@@ -11,6 +11,9 @@ import {
 const theme = createMuiTheme({
   typography: {
     fontFamily: "Lato",
+    h1: {
+      fontSize: "2rem",
+    },
   },
 })
 

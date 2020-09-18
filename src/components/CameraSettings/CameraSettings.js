@@ -1,9 +1,10 @@
 import React, { useState } from "react"
-import { Grid, Button, Typography, Box } from "@material-ui/core"
+import { Grid, Button, Typography } from "@material-ui/core"
 import CameraType from "../CameraType/CameraType"
 import FocalLength from "../FocalLength/FocalLength"
 import CameraIcon from "@material-ui/icons/Camera"
 import Field from "../Field/Field"
+import CenteredBox from "../CenteredBox/CenteredBox"
 
 const CameraSettings = () => {
   const [cropType, setCropType] = useState("Canon Crop Sensor")
@@ -45,15 +46,14 @@ const CameraSettings = () => {
       spacing={4}
     >
       <Grid item>
-        <Box display="flex" flexDirection="row" justifyContent="center" p={3}>
-          <CameraIcon color="secondary" fontSize="large" />
-        </Box>
+        <CenteredBox>
+          <CameraIcon color="secondary" style={{ fontSize: "4rem" }} />
+        </CenteredBox>
       </Grid>
       <Grid item xs={12}>
         <Typography variant="body1" color="textPrimary" align="center">
-          This app will calculate the shutter speed for your{" "}
-          <b>Astro Photography</b> shots. Choosing the right shutter speed will
-          avoid unnecessary star trails.
+          Calculate the shutter speed for your <b>Astro Photography</b> shots.
+          Choosing the right shutter speed will avoid unnecessary star trails.
         </Typography>
       </Grid>
       <Grid item xs={6} sm={3}>

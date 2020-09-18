@@ -52,7 +52,7 @@ const CameraSettings = () => {
       </Grid>
       <Grid item xs={12}>
         <Typography variant="body1" color="textPrimary" align="center">
-          Calculate the shutter speed for your <b>Astro Photography</b> shots.
+          Calculate the shutter speed for your <b>Astrophotography</b> shots.
           Choosing the right shutter speed will avoid unnecessary star trails.
         </Typography>
       </Grid>

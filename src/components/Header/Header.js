@@ -1,12 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Typography, Box } from "@material-ui/core"
+import { Box } from "@material-ui/core"
 
 const Header = ({ siteTitle }) => (
-  <Box p={3}>
-    <Typography variant="h1" color="primary" align="center">
-      {siteTitle}
-    </Typography>
+  <Box p={3} textAlign="center">
+    <h1>{siteTitle}</h1>
   </Box>
 )
 

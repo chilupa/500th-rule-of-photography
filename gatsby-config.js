@@ -1,10 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `500th Rule of Photography`,
+    title: `500th Rule`,
     description: `500th rule helps you choose right camera settings to get a good exposure of stars and Milky ways and thus avoiding Star trails`,
     author: `Pavan Chilukuri`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

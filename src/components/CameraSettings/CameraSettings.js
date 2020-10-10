@@ -1,10 +1,8 @@
 import React, { useState } from "react"
-import { Grid, Button, Typography, Snackbar } from "@material-ui/core"
+import { Grid, Button, Snackbar, Box } from "@material-ui/core"
 import CameraType from "../CameraType/CameraType"
 import FocalLength from "../FocalLength/FocalLength"
 import CameraIcon from "@material-ui/icons/Camera"
-import Field from "../Field/Field"
-import CenteredBox from "../CenteredBox/CenteredBox"
 import { Zoom, Bounce } from "react-reveal"
 import Alert from "../Alert/Alert"
 
@@ -58,41 +56,33 @@ const CameraSettings = () => {
     <Grid
       container
       direction="row"
-      justify="center"
       alignItems="center"
+      justify="center"
       spacing={4}
     >
-      <Grid item>
-        <CenteredBox>
-          <Zoom>
-            <CameraIcon color="secondary" style={{ fontSize: "4rem" }} />
-          </Zoom>
-        </CenteredBox>
+      <Grid style={{ textAlign: "center" }} item xs={12}>
+        <Zoom>
+          <CameraIcon color="secondary" style={{ fontSize: "3rem" }} />
+        </Zoom>
       </Grid>
-      <Grid item xs={12}>
-        <Typography variant="body1" color="textPrimary" align="center">
+      <Grid style={{ textAlign: "center" }} item xs={12}>
+        <p>
           Calculate the shutter speed for your <b>Astrophotography</b> shots.
           Choosing the right shutter speed will avoid unnecessary star trails.
-        </Typography>
+        </p>
       </Grid>
-      <Grid item xs={6} sm={3}>
-        <Field text="Camera Type" />
-      </Grid>
-      <Grid item xs={6} sm={3}>
+      <Grid style={{ textAlign: "center" }} item xs={12}>
         <CameraType
           cameras={cameras}
           handleChange={handleChange}
           cropType={cropType}
         />
       </Grid>
-      <Grid item xs={6} sm={3}>
-        <Field text="Focal Length" />
-      </Grid>
-      <Grid item xs={6} sm={3}>
+      <Grid style={{ textAlign: "center" }} item xs={12}>
         <FocalLength handleFocalLengthChange={handleFocalLengthChange} />
       </Grid>
       <Grid item xs={6} sm={3}>
-        <Typography align="center">
+        <Box pt={2}>
           <Button
             fullWidth
             disabled={focalLength === "" || cropType === ""}
@@ -102,21 +92,23 @@ const CameraSettings = () => {
           >
             Calculate
           </Button>
-        </Typography>
+        </Box>
       </Grid>
       <Grid item xs={12}>
         <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
           {error ? (
             <Alert severity="error">
-              <Typography variant="body1" align="center">
-                Something went wrong. Please try again.
-              </Typography>
+              <Bounce>
+                <p>Something went wrong. Please try again.</p>
+              </Bounce>
             </Alert>
           ) : (
             <Alert severity="success">
-              <Typography variant="body1" align="center">
-                Your shutter speed should be ~ <b>{shutterSpeed}</b> second(s)
-              </Typography>
+              <Bounce>
+                <div>
+                  Your shutter speed should be ~ <b>{shutterSpeed}</b> second(s)
+                </div>
+              </Bounce>
             </Alert>
           )}
         </Snackbar>

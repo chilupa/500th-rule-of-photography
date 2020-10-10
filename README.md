@@ -1,6 +1,6 @@
 # 500th Rule of Photography 📷
 
-Very useful app for photographers for their Astrophotography shots.
+Very useful app for photographers for their Astrophotography shots. This app calculates you the shutter speed for the camera based on the camera sensor type and focal length of the lens you are using.
 
 ## Tools 🧰
 

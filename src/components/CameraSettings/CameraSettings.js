@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { Grid, Button, Snackbar, Box } from "@material-ui/core"
 import CameraType from "../CameraType/CameraType"
 import FocalLength from "../FocalLength/FocalLength"
-import CameraIcon from "@material-ui/icons/Camera"
 import { Zoom, Bounce } from "react-reveal"
 import Alert from "../Alert/Alert"
+import { IoIosCamera } from "react-icons/io"
 
 const CameraSettings = () => {
   const [cropType, setCropType] = useState("Canon Crop Sensor")
@@ -48,7 +48,6 @@ const CameraSettings = () => {
     if (reason === "clickaway") {
       return
     }
-
     setOpen(false)
   }
 
@@ -62,7 +61,7 @@ const CameraSettings = () => {
     >
       <Grid style={{ textAlign: "center" }} item xs={12}>
         <Zoom>
-          <CameraIcon color="secondary" style={{ fontSize: "3rem" }} />
+          <IoIosCamera style={{ fontSize: "3rem" }} />
         </Zoom>
       </Grid>
       <Grid style={{ textAlign: "center" }} item xs={12}>
@@ -99,7 +98,7 @@ const CameraSettings = () => {
           {error ? (
             <Alert severity="error">
               <Bounce>
-                <p>Something went wrong. Please try again.</p>
+                <div>Something went wrong. Please try again.</div>
               </Bounce>
             </Alert>
           ) : (

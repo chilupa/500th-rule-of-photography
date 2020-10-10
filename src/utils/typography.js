@@ -1,5 +1,5 @@
 import Typography from "typography"
-import funstonTheme from "typography-theme-funston"
+import fairyGatesTheme from "typography-theme-fairy-gates"
 
-const typography = new Typography(funstonTheme)
+const typography = new Typography(fairyGatesTheme)
 export default typography

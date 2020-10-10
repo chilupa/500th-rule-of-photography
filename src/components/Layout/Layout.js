@@ -25,8 +25,10 @@ const Layout = ({ children }) => {
 
   return (
     <Container maxWidth="md">
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <Box pt={3}>{children}</Box>
+      <div style={{ textAlign: "center" }}>
+        <Header siteTitle={data.site.siteMetadata.title} />
+      </div>
+      <Box pt={2}>{children}</Box>
     </Container>
   )
 }

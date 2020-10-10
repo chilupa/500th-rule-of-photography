@@ -7,6 +7,7 @@ import {
   ThemeProvider,
   responsiveFontSizes,
 } from "@material-ui/core/styles"
+import { Helmet } from "react-helmet"
 
 const theme = createMuiTheme({
   typography: {
@@ -22,6 +23,15 @@ const theme = createMuiTheme({
 
 const IndexPage = () => (
   <ThemeProvider theme={responsiveFontSizes(theme)}>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>500th Rule Of Photography</title>
+      <html lang="en" />
+      <meta
+        name="description"
+        content="This app helps you avoid star trails while doing Astro photography and lets you choose right camera settings"
+      />
+    </Helmet>
     <Layout>
       <SEO title="500th Rule of Photography" />
       <CameraSettings />

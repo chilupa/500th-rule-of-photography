@@ -1,10 +1,12 @@
 import React, { useState } from "react"
-import { Grid, Button, Typography } from "@material-ui/core"
+import { Grid, Button, Typography, Snackbar } from "@material-ui/core"
 import CameraType from "../CameraType/CameraType"
 import FocalLength from "../FocalLength/FocalLength"
 import CameraIcon from "@material-ui/icons/Camera"
 import Field from "../Field/Field"
 import CenteredBox from "../CenteredBox/CenteredBox"
+import { Zoom, Bounce } from "react-reveal"
+import Alert from "../Alert/Alert"
 
 const CameraSettings = () => {
   const [cropType, setCropType] = useState("Canon Crop Sensor")
@@ -29,12 +31,27 @@ const CameraSettings = () => {
 
   const handleCalculation = () => {
     const shutterSpeed = Math.round(calculation[cropType], 0)
-    if (shutterSpeed === 0) {
+    if (shutterSpeed === Infinity) {
       setError(true)
     } else {
       setShutterSpeed(shutterSpeed)
       setError(false)
     }
+  }
+
+  const [open, setOpen] = React.useState(false)
+
+  const handleClick = () => {
+    setOpen(true)
+    handleCalculation()
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return
+    }
+
+    setOpen(false)
   }
 
   return (
@@ -47,7 +64,9 @@ const CameraSettings = () => {
     >
       <Grid item>
         <CenteredBox>
-          <CameraIcon color="secondary" style={{ fontSize: "4rem" }} />
+          <Zoom>
+            <CameraIcon color="secondary" style={{ fontSize: "4rem" }} />
+          </Zoom>
         </CenteredBox>
       </Grid>
       <Grid item xs={12}>
@@ -72,29 +91,35 @@ const CameraSettings = () => {
       <Grid item xs={6} sm={3}>
         <FocalLength handleFocalLengthChange={handleFocalLengthChange} />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={6} sm={3}>
         <Typography align="center">
           <Button
+            fullWidth
             disabled={focalLength === "" || cropType === ""}
             variant="contained"
             color="primary"
-            onClick={handleCalculation}
+            onClick={handleClick}
           >
             Calculate
           </Button>
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        {focalLength && cropType && shutterSpeed && (
-          <Typography color="secondary" variant="body1" align="center">
-            Your shutter speed should be ~ <b>{shutterSpeed}</b> second(s)
-          </Typography>
-        )}
-        {error && (
-          <Typography color="error" variant="body1" align="center">
-            Something went wrong. Please try again.
-          </Typography>
-        )}
+        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+          {error ? (
+            <Alert severity="error">
+              <Typography variant="body1" align="center">
+                Something went wrong. Please try again.
+              </Typography>
+            </Alert>
+          ) : (
+            <Alert severity="success">
+              <Typography variant="body1" align="center">
+                Your shutter speed should be ~ <b>{shutterSpeed}</b> second(s)
+              </Typography>
+            </Alert>
+          )}
+        </Snackbar>
       </Grid>
     </Grid>
   )
